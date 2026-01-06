@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { MotionSection } from "@/components/MotionSection";
 
 export function InnerPage({
   section,
@@ -62,7 +63,7 @@ export function InnerPage({
   return (
     <main className="bg-white">
       <div className="mx-auto w-full max-w-7xl px-2 py-6 sm:px-3">
-        <div className="text-xs text-zinc-500">
+        <div className="text-sm text-zinc-500">
           <a href="/" className="hover:text-zinc-900">
             Home
           </a>
@@ -72,7 +73,7 @@ export function InnerPage({
           <span className="text-zinc-900">{title}</span>
         </div>
 
-        <div className="mt-4 overflow-hidden bg-white">
+        <MotionSection className="mt-4 overflow-hidden bg-white">
           <div className="grid min-h-[260px] md:grid-cols-12">
             <div className="relative md:col-span-4">
               <div className="absolute inset-0 bg-[#1E2A7B]" />
@@ -95,25 +96,28 @@ export function InnerPage({
               </div>
             </div>
           </div>
-        </div>
+        </MotionSection>
 
-        <div className="mt-12 grid gap-10 md:grid-cols-12">
+        <MotionSection className="mt-12 grid gap-10 md:grid-cols-12" delay={0.05}>
           <div className="md:col-span-4">
             <div className="bg-zinc-100 p-10 text-2xl font-light leading-tight text-zinc-800">{lead}</div>
           </div>
 
-          <div className="md:col-span-8">
-            {renderParagraphs(introText)}
-          </div>
-        </div>
+          <div className="md:col-span-8">{renderParagraphs(introText)}</div>
+        </MotionSection>
 
         {blocks?.length ? (
           <div className="mt-12 grid gap-12">
             {blocks.map((b, idx) => {
+              const delay = 0.05;
               if (b.kind === "imageText") {
                 const blockText = b.text.replaceAll("\\n", "\n");
                 return (
-                  <div key={idx} className="grid gap-0 bg-zinc-100 md:grid-cols-12">
+                  <MotionSection
+                    key={idx}
+                    className="grid gap-0 bg-zinc-100 md:grid-cols-12"
+                    delay={delay}
+                  >
                     <div className="relative h-[280px] md:col-span-4 md:min-h-[320px]">
                       <Image
                         src={b.imageSrc}
@@ -127,39 +131,37 @@ export function InnerPage({
                       <div className="text-3xl font-light text-zinc-900">{b.heading}</div>
                       <div className="mt-5">{renderParagraphs(blockText)}</div>
                     </div>
-                  </div>
+                  </MotionSection>
                 );
               }
 
               if (b.kind === "twoCol") {
                 const rightText = b.rightText.replaceAll("\\n", "\n");
                 return (
-                  <div key={idx} className="grid gap-10 md:grid-cols-12">
+                  <MotionSection key={idx} className="grid gap-10 md:grid-cols-12" delay={delay}>
                     <div className="md:col-span-4">
                       <div className="bg-zinc-100 p-10 text-3xl font-light leading-tight text-zinc-800">
                         {b.leftTitle}
                       </div>
                     </div>
-                    <div className="md:col-span-8">
-                      {renderParagraphs(rightText)}
-                    </div>
-                  </div>
+                    <div className="md:col-span-8">{renderParagraphs(rightText)}</div>
+                  </MotionSection>
                 );
               }
 
               const blockText = b.text.replaceAll("\\n", "\n");
               return (
-                <div key={idx} className="bg-zinc-100 p-10">
+                <MotionSection key={idx} className="bg-zinc-100 p-10" delay={delay}>
                   <div className="text-3xl font-light text-zinc-900">{b.heading}</div>
                   <div className="mt-5">{renderParagraphs(blockText)}</div>
-                </div>
+                </MotionSection>
               );
             })}
           </div>
         ) : null}
 
         {stats ? (
-          <div className="mt-12">
+          <MotionSection className="mt-12" delay={0.05}>
             <div className="text-3xl font-light text-zinc-900">{stats.title}</div>
             <div className="mt-5 grid gap-4 md:grid-cols-3">
               {stats.items.map((it) => (
@@ -172,7 +174,7 @@ export function InnerPage({
                 </div>
               ))}
             </div>
-          </div>
+          </MotionSection>
         ) : null}
       </div>
     </main>

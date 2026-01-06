@@ -2,7 +2,7 @@ export default function PartnersPage() {
   return (
     <main className="bg-white">
       <div className="mx-auto w-full max-w-7xl px-2 py-6 sm:px-3">
-        <div className="text-xs text-zinc-500">
+        <div className="text-sm text-zinc-500">
           <a href="/" className="hover:text-zinc-900">
             Home
           </a>

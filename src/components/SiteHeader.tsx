@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { Menu, X, ShoppingCart, Newspaper, Search, ChevronRight } from "lucide-react";
+import { ScrollProgress } from "@/components/ScrollProgress";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -96,9 +97,28 @@ export function SiteHeader() {
         </div>
 
         <div className="flex items-center gap-0">
+          <div className="flex items-center md:hidden">
+            <a
+              href="/#noticias"
+              className="inline-flex h-16 w-14 items-center justify-center rounded-none bg-sky-600 text-white transition hover:bg-sky-500 active:scale-[0.98]"
+              aria-label="Noticias"
+            >
+              <Newspaper className="size-5" />
+            </a>
+            <a
+              href="https://catalog-mauve-ten.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-16 w-14 items-center justify-center rounded-none bg-orange-500 text-white transition hover:opacity-95 active:scale-[0.98]"
+              aria-label="Tienda Online"
+            >
+              <ShoppingCart className="size-5" />
+            </a>
+          </div>
+
           <a
             href="/#noticias"
-            className="hidden h-16 items-center gap-2 rounded-none bg-sky-600 px-4 text-base font-semibold text-white transition hover:bg-sky-500 md:inline-flex"
+            className="hidden h-16 items-center gap-2 rounded-none bg-sky-600 px-4 text-base font-semibold text-white transition hover:bg-sky-500 active:scale-[0.98] md:inline-flex"
           >
             <Newspaper className="size-4" />
             Noticias
@@ -107,12 +127,16 @@ export function SiteHeader() {
             href="https://catalog-mauve-ten.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden h-16 items-center gap-2 rounded-none bg-orange-500 px-4 text-base font-semibold text-white md:inline-flex"
+            className="hidden h-16 items-center gap-2 rounded-none bg-orange-500 px-4 text-base font-semibold text-white transition hover:opacity-95 active:scale-[0.98] md:inline-flex"
           >
             <ShoppingCart className="size-4" />
             Tienda Online
           </a>
         </div>
+      </div>
+
+      <div className="relative">
+        <ScrollProgress />
       </div>
 
       {open ? (
@@ -126,7 +150,7 @@ export function SiteHeader() {
             id={menuId}
             role="dialog"
             aria-modal="true"
-            className="fixed left-[max(0px,calc((100vw-80rem)/2+0.5rem))] top-16 z-50 h-[calc(100vh-4rem)] w-[86%] max-w-sm bg-white shadow-xl sm:w-[420px]"
+            className="fixed left-0 top-16 z-50 h-[calc(100vh-4rem)] w-full overflow-y-auto bg-white shadow-xl sm:left-[max(0px,calc((100vw-80rem)/2+0.5rem))] sm:w-[420px] sm:max-w-sm"
           >
             {activeMenu === "root" ? (
               <>

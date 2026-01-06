@@ -18,27 +18,29 @@ export default function Home() {
               <div className="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm">
                 <div className="relative aspect-[16/9] bg-zinc-200">
                   <HeroCarousel />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-transparent" />
 
-                  <div className="absolute inset-x-6 bottom-6 max-w-xl rounded-xl bg-white/80 p-7 backdrop-blur-sm">
-                    <div className="text-2xl font-semibold text-zinc-950">
+                  <div className="absolute inset-x-0 bottom-0 rounded-b-2xl bg-gradient-to-t from-black/70 via-black/30 to-transparent p-4 sm:p-6">
+                    <div className="max-w-[520px]">
+                    <div className="text-base font-semibold text-white sm:text-xl">
                       Bienvenido a Hnoz Fernandez, tu distribuidor de materiales
                       eléctricos
                     </div>
-                    <div className="mt-3 text-base leading-7 text-zinc-700">
+                    <div className="mt-2 text-xs leading-5 text-white/90 sm:text-sm sm:leading-6">
                       Distribución de materiales eléctricos y ferretería
                       industrial, con atención rápida y apoyo para proyectos.
                     </div>
 
-                    <div className="mt-5 flex items-center gap-3">
+                    <div className="mt-4 flex items-center gap-3">
                       <a
                         href="#nosotros"
-                        className="inline-flex h-11 items-center justify-center rounded-full bg-[#1E2A7B] px-7 text-base font-semibold text-white shadow-sm transition hover:opacity-95"
+                        className="inline-flex h-9 items-center justify-center rounded-full bg-[#1E2A7B] px-5 text-xs font-semibold text-white shadow-sm transition hover:opacity-95 active:scale-[0.98] sm:h-10 sm:px-6 sm:text-sm"
                       >
                         Nosotros
                       </a>
                     </div>
+                    </div>
                   </div>
-
                 </div>
               </div>
             </div>
@@ -261,14 +263,17 @@ export default function Home() {
               title: "Mejoras en atención y despacho a Lima y provincias",
             },
           ].map((p) => (
-            <article key={p.title} className="grid gap-4">
+            <article
+              key={p.title}
+              className="group grid gap-4 transition motion-safe:duration-300 motion-safe:ease-out hover:-translate-y-1"
+            >
               <div className="relative aspect-[16/9] overflow-hidden bg-zinc-200">
                 <Image
                   src={p.img}
                   alt=""
                   fill
                   sizes="(max-width: 768px) 100vw, 25vw"
-                  className="object-cover"
+                  className="object-cover transition-transform motion-safe:duration-500 motion-safe:ease-out group-hover:scale-[1.04]"
                 />
               </div>
               <div className="text-sm text-zinc-600">{p.date}</div>

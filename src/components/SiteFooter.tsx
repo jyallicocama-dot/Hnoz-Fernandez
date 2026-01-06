@@ -36,7 +36,7 @@ export function SiteFooter() {
           </div>
 
           <div className="py-7 md:col-span-3">
-            <div className="grid grid-cols-2 gap-x-10 gap-y-2 text-sm text-zinc-700">
+            <div className="grid grid-cols-1 gap-x-10 gap-y-2 text-sm text-zinc-700 sm:grid-cols-2">
               <div className="grid gap-2">
                 <a href="#nosotros" className="hover:text-zinc-950">
                   Sobre Nosotros
